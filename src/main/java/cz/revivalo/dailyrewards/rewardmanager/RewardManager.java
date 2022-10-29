@@ -18,9 +18,12 @@ import java.util.Random;
 public class RewardManager {
     private final DailyRewards plugin;
     private final Cooldowns cooldowns;
+    private final DailyRewardByProgression dailyRewardByProgression;
+
     public RewardManager(DailyRewards plugin){
         this.plugin = plugin;
         cooldowns = plugin.getCooldowns();
+        dailyRewardByProgression = plugin.getDailyRewardByProgression();
     }
 
     public void claim(final Player player, String type, boolean fromCommand){
@@ -31,7 +34,7 @@ public class RewardManager {
             }
             return;
         }
-        if (cd >= 0){
+        if (cd >= 0 && !dailyRewardByProgression.getIsTest()){
             String time = cooldowns.getCooldown(player, type, true);
             if (fromCommand){
                 player.sendMessage(Lang.COOLDOWNMESSAGE.content(player).replace("%type%", getRewardPlaceholder(type)).replace("%time%", time));
@@ -39,17 +42,22 @@ public class RewardManager {
                 player.playSound(player.getLocation(), Sound.valueOf(Lang.UNAVAILABLEREWARDSOUND.content(player).toUpperCase(Locale.ENGLISH)), 1F, 1F);
             }
         } else {
-            List<String> rewards = Lang.valueOf(type.toUpperCase(Locale.ENGLISH) + plugin.getPremium(player, type) + "REWARDS").contentLore(player);
-            ConsoleCommandSender console = Bukkit.getConsoleSender();
-            if (rewards.size() != 0) {
-                for (String str : rewards) {
-                    Bukkit.dispatchCommand(console, str.replace("%random%", String.valueOf(new Random().nextInt(200) + 100)).replace("%player%", player.getName()));
-                }
-            } else {
-                player.sendMessage(Lang.REWARDDONTSET.content(player));
+            if(type == RewardTypesConstants.DAILY && dailyRewardByProgression.getIsEnabled()){
+                dailyRewardByProgression.reward(player);
             }
-            player.playSound(player.getLocation(), Sound.valueOf(Lang.valueOf(type.toUpperCase(Locale.ENGLISH) + "SOUND").content(player).toUpperCase(Locale.ENGLISH)), 1F, 1F);
-            player.sendTitle(Lang.valueOf(type.toUpperCase(Locale.ENGLISH) + "TITLE").content(player), Lang.valueOf(type.toUpperCase(Locale.ENGLISH) + "SUBTITLE").content(player), 15, 35, 15);
+            else{
+                List<String> rewards = Lang.valueOf(type.toUpperCase(Locale.ENGLISH) + plugin.getPremium(player, type) + "REWARDS").contentLore(player);
+                ConsoleCommandSender console = Bukkit.getConsoleSender();
+                if (rewards.size() != 0) {
+                    for (String str : rewards) {
+                        Bukkit.dispatchCommand(console, str.replace("%random%", String.valueOf(new Random().nextInt(200) + 100)).replace("%player%", player.getName()));
+                    }
+                } else {
+                    player.sendMessage(Lang.REWARDDONTSET.content(player));
+                }
+                player.playSound(player.getLocation(), Sound.valueOf(Lang.valueOf(type.toUpperCase(Locale.ENGLISH) + "SOUND").content(player).toUpperCase(Locale.ENGLISH)), 1F, 1F);
+                player.sendTitle(Lang.valueOf(type.toUpperCase(Locale.ENGLISH) + "TITLE").content(player), Lang.valueOf(type.toUpperCase(Locale.ENGLISH) + "SUBTITLE").content(player), 15, 35, 15);
+            }
             cooldowns.setCooldown(player, type);
             if (Lang.ANNOUNCEENABLED.getBoolean()) {
                 announce(Lang.valueOf(type.toUpperCase(Locale.ENGLISH) + plugin.getPremium(player, type) + "COLLECTED").content(player).replace("%player%", player.getName()));
@@ -74,6 +82,7 @@ public class RewardManager {
     public boolean reset(final OfflinePlayer player, String type){
         if (player.isOnline() || player.hasPlayedBefore()) {
             FileConfiguration data = PlayerData.getConfig(player);
+            data.set("rewards.dailyProgression", 1);
             if (type.equalsIgnoreCase("all")) {
                 Objects.requireNonNull(data).set("rewards", null);
             } else {

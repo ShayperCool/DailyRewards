@@ -27,9 +27,9 @@ config:
   # Make rewards available for first join
   automatically-activate: true
   enable-join-notification: true
-  announce-enabled: true
+  announce-enabled: false
   # In seconds
-  join-notification-delay: 3
+  join-notification-delay: 30
   join-hover-message: "&7Click for collect your rewards"
   join-notifications:
   - ' '
@@ -53,6 +53,44 @@ config:
   daily-displayname-available: "&a&lDAILY REWARD"
   daily-available-item: "CHEST_MINECART"
   daily-unavailable-item: "MINECART"
+  daily-progression-enabled: true
+  daily-progression-test: true
+  daily-progression:
+    day1:
+      rewards:
+        - "give %player% iron_ingot 8"
+      lore:
+        - "Day1 Reward!"
+      title: "&a&lRewards"
+      subtitle: "&7You have collected your &adaily&7 reward"
+    day2:
+      rewards:
+        - "give %player% iron_ingot 8"
+      lore:
+        - "Day1 Reward!"
+      title: "&a&lRewards"
+      subtitle: "&7You have collected your &adaily&7 reward"
+    day3:
+      rewards:
+        - "give %player% iron_ingot 8"
+      lore:
+        - "Day1 Reward!"
+      title: "&a&lRewards"
+      subtitle: "&7You have collected your &adaily&7 reward"
+    day4:
+      rewards:
+        - "give %player% iron_ingot 8"
+      lore:
+        - "Day1 Reward!"
+      title: "&a&lRewards"
+      subtitle: "&7You have collected your &adaily&7 reward"
+    day5:
+      rewards:
+        - "give %player% iron_ingot 8"
+      lore:
+        - "Day1 Reward!"
+      title: "&a&lRewards"
+      subtitle: "&7You have collected your &adaily&7 reward"
   daily-available-lore:
     - "&7Reward contains:"
     - "&a 8x &fIron Ingot"

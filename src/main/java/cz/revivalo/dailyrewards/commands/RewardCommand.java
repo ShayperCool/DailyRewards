@@ -4,7 +4,9 @@ import com.tchristofferson.configupdater.ConfigUpdater;
 import cz.revivalo.dailyrewards.DailyRewards;
 import cz.revivalo.dailyrewards.guimanager.GuiManager;
 import cz.revivalo.dailyrewards.lang.Lang;
+import cz.revivalo.dailyrewards.rewardmanager.DailyRewardByProgression;
 import cz.revivalo.dailyrewards.rewardmanager.RewardManager;
+import cz.revivalo.dailyrewards.rewardmanager.RewardTypesConstants;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -19,10 +21,12 @@ public class RewardCommand implements CommandExecutor {
     private final DailyRewards plugin;
     private final RewardManager rewardManager;
     private final GuiManager guiManager;
+    private final DailyRewardByProgression dailyRewardByProgression;
     public RewardCommand(DailyRewards plugin) {
         this.plugin = plugin;
         rewardManager = plugin.getRewardManager();
         guiManager = plugin.getGuiManager();
+        dailyRewardByProgression = plugin.getDailyRewardByProgression();
     }
 
     @Override
@@ -36,15 +40,15 @@ public class RewardCommand implements CommandExecutor {
             if (cmd.getName().equalsIgnoreCase("reward")){
                 switch (args.length){
                     case 0:
-                        rewardManager.claim(player, "daily", true);
+                        rewardManager.claim(player, RewardTypesConstants.DAILY, true);
                         break;
                     case 1:
                         switch (args[0]){
-                            case "weekly":
-                                rewardManager.claim(player, "weekly", true);
+                            case RewardTypesConstants.WEEKLY:
+                                rewardManager.claim(player, RewardTypesConstants.WEEKLY, true);
                                 break;
-                            case "monthly":
-                                rewardManager.claim(player, "monthly", true);
+                            case RewardTypesConstants.MONTHLY:
+                                rewardManager.claim(player, RewardTypesConstants.MONTHLY, true);
                                 break;
                             case "reload":
                                 if (!player.hasPermission("dailyreward.manage")){
@@ -60,6 +64,7 @@ public class RewardCommand implements CommandExecutor {
                                     }
 
                                     Lang.reload();
+                                    dailyRewardByProgression.reload();
                                     player.sendMessage(Lang.RELOADMSG.content(player));
                                 }
                                 break;

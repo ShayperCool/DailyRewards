@@ -146,8 +146,8 @@ public enum Lang {
             }
     }
 
-    private final Pattern hexPattern = Pattern.compile("<#([A-Fa-f0-9]){6}>");
-    public String applyColor(String message){
+    private static final Pattern hexPattern = Pattern.compile("<#([A-Fa-f0-9]){6}>");
+    public static String applyColor(String message){
         if (DailyRewards.isHexSupport) {
             Matcher matcher = hexPattern.matcher(message);
             while (matcher.find()) {

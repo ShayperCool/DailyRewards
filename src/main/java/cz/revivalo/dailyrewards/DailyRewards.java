@@ -6,10 +6,7 @@ import cz.revivalo.dailyrewards.guimanager.InventoryClickListener;
 import cz.revivalo.dailyrewards.guimanager.GuiManager;
 import cz.revivalo.dailyrewards.lang.Lang;
 import cz.revivalo.dailyrewards.playerconfig.PlayerData;
-import cz.revivalo.dailyrewards.rewardmanager.Cooldowns;
-import cz.revivalo.dailyrewards.rewardmanager.JoinNotification;
-import cz.revivalo.dailyrewards.rewardmanager.Placeholder;
-import cz.revivalo.dailyrewards.rewardmanager.RewardManager;
+import cz.revivalo.dailyrewards.rewardmanager.*;
 import cz.revivalo.dailyrewards.updatechecker.Notification;
 import cz.revivalo.dailyrewards.updatechecker.UpdateChecker;
 import org.bstats.bukkit.Metrics;
@@ -30,6 +27,7 @@ public final class DailyRewards extends JavaPlugin {
     private Cooldowns cooldowns;
     private RewardManager rewardManager;
     private GuiManager guiManager;
+    private DailyRewardByProgression dailyRewardByProgression;
     public boolean papi = false;
     public static boolean newestVersion;
     public static boolean isHexSupport;
@@ -75,6 +73,7 @@ public final class DailyRewards extends JavaPlugin {
 
         reloadConfig();
         cooldowns = new Cooldowns();
+        dailyRewardByProgression = new DailyRewardByProgression(plugin);
         rewardManager = new RewardManager(plugin);
         guiManager = new GuiManager(plugin);
         registerCommands();
@@ -120,4 +119,6 @@ public final class DailyRewards extends JavaPlugin {
     public GuiManager getGuiManager() {
         return guiManager;
     }
+
+    public DailyRewardByProgression getDailyRewardByProgression() {return dailyRewardByProgression;}
 }
