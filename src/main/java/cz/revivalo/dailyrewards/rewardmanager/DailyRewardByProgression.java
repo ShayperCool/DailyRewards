@@ -68,6 +68,19 @@ public class DailyRewardByProgression {
         return isTest;
     }
 
+    public boolean isLimitNotReached(Player player){
+        FileConfiguration data = PlayerData.getConfig(player);
+        if (!data.isInt("rewards.dailyProgression")){
+            data.set("rewards.dailyProgression", 1);
+        }
+
+        int rewardDay = data.getInt("rewards.dailyProgression");
+
+        String rewardKey = "day" + rewardDay;
+
+        return rewardsPerDay.containsKey(rewardKey);
+    }
+
     public void reward(Player player){
         FileConfiguration data = PlayerData.getConfig(player);
         if (!data.isInt("rewards.dailyProgression")){
@@ -81,7 +94,7 @@ public class DailyRewardByProgression {
         logger.info(player.getName() + "will get reward for " + rewardKey);
 
         if (rewardsPerDay.containsKey(rewardKey)){
-            data.set("rewards.dailyProgression",rewardDay + 1);
+            data.set("rewards.dailyProgression", rewardDay + 1);
             RewardPerDay reward = rewardsPerDay.get(rewardKey);
             GiveRewards(player, reward);
             PrintLore(player, reward);
