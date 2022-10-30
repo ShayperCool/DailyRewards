@@ -40,21 +40,22 @@ public class DailyRewardByProgression {
 
         if(isEnabled){
             ConfigurationSection progressionSection = cfg.getConfigurationSection("config.daily-progression");
+            if(progressionSection != null){
+                for (String key : progressionSection.getKeys(false)) {
+                    ConfigurationSection dayRewardSection = progressionSection.getConfigurationSection(key);
+                    RewardPerDay reward = new RewardPerDay();
 
-            for (String key : progressionSection.getKeys(false)) {
-                ConfigurationSection dayRewardSection = progressionSection.getConfigurationSection(key);
-                RewardPerDay reward = new RewardPerDay();
+                    reward.rewards = dayRewardSection.getStringList("rewards");
+                    reward.lore = dayRewardSection.getStringList("lore");
+                    reward.title = dayRewardSection.getString("title");
+                    reward.subtitle = dayRewardSection.getString("subtitle");
 
-                reward.rewards = dayRewardSection.getStringList("rewards");
-                reward.lore = dayRewardSection.getStringList("lore");
-                reward.title = dayRewardSection.getString("title");
-                reward.subtitle = dayRewardSection.getString("subtitle");
-
-                if (!rewardsPerDay.containsKey(key)){
-                    rewardsPerDay.put(key, reward);
-                }
-                else{
-                    logger.warning("Reward for " + key + " was already added");
+                    if (!rewardsPerDay.containsKey(key)){
+                        rewardsPerDay.put(key, reward);
+                    }
+                    else{
+                        logger.warning("Reward for " + key + " was already added");
+                    }
                 }
             }
         }

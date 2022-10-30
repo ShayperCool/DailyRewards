@@ -15,12 +15,12 @@
 #
 config:
   update-checker: true
-  reward-reset: "&e[&6&lDailyRewards&e] &fYou reset &e%type% &freward for player &e%player%"
-  unavailable-player: "&c[&4&lDailyRewards&c] Player &n%player%&c is not available"
-  permission-msg: "&c[&4&lDailyRewards&c] You are not permitted to use this command"
-  rewards-dont-set: "&c[&4&lDailyRewards&c] Rewards is not set"
-  reload-msg: "&e[&6&lDailyRewards&e] &fPlugin was successfully reloaded"
-  menu-title: "Rewards"
+  reward-reset: '&e[&6&lDailyRewards&e] &fYou reset &e%type% &freward for player &e%player%'
+  unavailable-player: '&c[&4&lDailyRewards&c] Player &n%player%&c is not available'
+  permission-msg: '&c[&4&lDailyRewards&c] You are not permitted to use this command'
+  rewards-dont-set: '&c[&4&lDailyRewards&c] Rewards is not set'
+  reload-msg: '&e[&6&lDailyRewards&e] &fPlugin was successfully reloaded'
+  menu-title: Rewards
   menu-size: 45
   fill-background-enabled: true
   background-item: GRAY_STAINED_GLASS_PANE
@@ -30,162 +30,342 @@ config:
   announce-enabled: false
   # In seconds
   join-notification-delay: 30
-  join-hover-message: "&7Click for collect your rewards"
+  join-hover-message: '&7Click for collect your rewards'
   join-notifications:
-  - ' '
-  - '&2 - &a%rewards% reward(s) are waiting for you! &f(Click here)'
-  - ' '
-  cooldown-format: "&c%days% days %hours% hours"
-  cooldown-message: "&c[&4&lDailyRewards&c] For &l%type% &creward you have to wait &n%time%"
+    - ' '
+    - '&2 - &a%rewards% reward(s) are waiting for you! &f(Click here)'
+    - ' '
+  cooldown-format: '&c%days% days %hours% hours'
+  cooldown-message: '&c[&4&lDailyRewards&c] For &l%type% &creward you have to wait &n%time%'
   unavailable-reward-sound: ENTITY_ENDER_DRAGON_HURT
   #
   # DAILY REWARD SECTION
   #
-  daily-placeholder: "daily"
+  daily-placeholder: daily
   # In hours
   daily-cooldown: 24
   daily-position: 20
   daily-sound: ENTITY_PLAYER_LEVELUP
-  daily-title: "&a&lRewards"
-  daily-subtitle: "&7You have collected your &adaily&7 reward"
-  daily-collected: "&a%player% &7collected his &a&ldaily reward!"
-  daily-premium-collected: "&a%player% &7collected his &a&lpremium daily reward!"
-  daily-displayname-available: "&a&lDAILY REWARD"
-  daily-available-item: "CHEST_MINECART"
-  daily-unavailable-item: "MINECART"
+  daily-title: '&a&lRewards'
+  daily-subtitle: '&7You have collected your &adaily&7 reward'
+  daily-collected: '&a%player% &7collected his &a&ldaily reward!'
+  daily-premium-collected: '&a%player% &7collected his &a&lpremium daily reward!'
+  daily-displayname-available: '&a&lDAILY REWARD'
+  daily-available-item: CHEST_MINECART
+  daily-unavailable-item: MINECART
   daily-progression-enabled: true
   daily-progression-test: true
   daily-progression:
     day1:
       rewards:
-        - "give %player% iron_ingot 8"
+        - 'points give %player% 1000'
       lore:
-        - "Day1 Reward!"
-      title: "&a&lRewards"
-      subtitle: "&7You have collected your &adaily&7 reward"
+        - '[&bᛃ&r] Вы получили &51000 аркойнов'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за первый день'
     day2:
       rewards:
-        - "give %player% iron_ingot 8"
+        - 'eco give %player% 10000'
       lore:
-        - "Day1 Reward!"
-      title: "&a&lRewards"
-      subtitle: "&7You have collected your &adaily&7 reward"
+        - '[&bᛃ&r] &aВы получили 10000$'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за второй день'
     day3:
       rewards:
-        - "give %player% iron_ingot 8"
+        - 'give %player% enchanted_golden_apple 5'
       lore:
-        - "Day1 Reward!"
-      title: "&a&lRewards"
-      subtitle: "&7You have collected your &adaily&7 reward"
+        - '[&bᛃ&r] Вы получили &55 Зачарованных яблок'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за третий день'
     day4:
       rewards:
-        - "give %player% iron_ingot 8"
+        - 'eco give %player% 15000'
       lore:
-        - "Day1 Reward!"
-      title: "&a&lRewards"
-      subtitle: "&7You have collected your &adaily&7 reward"
+        - '[&bᛃ&r] &aВы получили 15000$'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за четвёртый день'
     day5:
       rewards:
-        - "give %player% iron_ingot 8"
+        - 'eco give %player% 20000'
       lore:
-        - "Day1 Reward!"
-      title: "&a&lRewards"
-      subtitle: "&7You have collected your &adaily&7 reward"
+        - '[&bᛃ&r] &aВы получили 20000$'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за пятый день'
+    day6:
+      rewards:
+        - 'give %player% totem_of_undying 3'
+      lore:
+        - '[&bᛃ&r] &aВы получили &63 Тотема бессмертия'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за шестой день'
+    day7:
+      rewards:
+        - 'eco give %player% 25000'
+      lore:
+        - '[&bᛃ&r] &aВы получили 25000$'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за седьмой день'
+    day8:
+      rewards:
+        - 'points give %player% 2000'
+      lore:
+        - '[&bᛃ&r] Вы получили &52000 аркойнов'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за восьмой день'
+    day9:
+      rewards:
+        - 'eco give %player% 30000'
+      lore:
+        - '[&bᛃ&r] &aВы получили 30000$'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за девятый день'
+    day10:
+      rewards:
+        - 'give %player% totem_of_undying 3' #тут нужно выдать 3 ловушки
+      lore:
+        - '[&bᛃ&r] &aВы получили &53 Ловушки'
+        - 'Вы можете узнать как их использовать в меню /crafts'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за десятый день'
+    day11:
+      rewards:
+        - 'eco give %player% 35000'
+      lore:
+        - '[&bᛃ&r] &aВы получили 35000$'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за одиннадцатый день'
+    day12:
+      rewards:
+        - 'eco give %player% 40000'
+      lore:
+        - '[&bᛃ&r] &aВы получили 40000$'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за двенадцатый день'
+    day13:
+      rewards:
+        - 'give %player% totem_of_undying 3' #тут нужно выдать 3 хлопушки
+      lore:
+        - '[&bᛃ&r] &aВы получили &33 Хлопушки'
+        - 'Вы можете узнать как их использовать в меню /crafts'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за тринадцатый день'
+    day14:
+      rewards:
+        - 'eco give %player% 45000'
+      lore:
+        - '[&bᛃ&r] &aВы получили 45000$'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за четырнадцатый день'
+    day15:
+      rewards:
+        - 'points give %player% 3000'
+      lore:
+        - '[&bᛃ&r] Вы получили &53000 аркойнов'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за пятнадцатый день'
+    day16:
+      rewards:
+        - 'eco give %player% 50000'
+      lore:
+        - '[&bᛃ&r] &aВы получили 50000$'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за шестнадцатый день'
+    day17:
+      rewards:
+        - 'give %player% totem_of_undying 3' #тут нужно выдать 3 хлопушки телепорт
+      lore:
+        - '[&bᛃ&r] &aВы получили &53 Хлопушки телепорт'
+        - 'Вы можете узнать как их использовать в меню /crafts'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за семнадцатый день'
+    day18:
+      rewards:
+        - 'eco give %player% 55000'
+      lore:
+        - '[&bᛃ&r] &aВы получили 55000$'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за восемнадцатый день'
+    day19:
+      rewards:
+        - 'eco give %player% 60000'
+      lore:
+        - '[&bᛃ&r] &aВы получили 60000$'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за девятнадцатый день'
+    day20:
+      rewards:
+        - 'give %player% totem_of_undying 3' #выдать меч война
+      lore:
+        - '[&bᛃ&r] &Вы получили &4Меч война'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за двадцатый день'
+    day21:
+      rewards:
+        - 'eco give %player% 65000'
+      lore:
+        - '[&bᛃ&r] &aВы получили 65000$'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за двадцать первый день'
+    day22:
+      rewards:
+        - 'points give %player% 4000'
+      lore:
+        - '[&bᛃ&r] Вы получили &54000 аркойнов'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за двадцать второй день'
+    day23:
+      rewards:
+        - 'eco give %player% 70000'
+      lore:
+        - '[&bᛃ&r] &aВы получили 70000$'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за двадцать третий день'
+    day24:
+      rewards:
+        - 'give %player% enchanted_golden_apple 10'
+      lore:
+        - '[&bᛃ&r] Вы получили &510 Зачарованных яблок'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за двадцать четвёртый день'
+    day25:
+      rewards:
+        - 'eco give %player% 75000'
+      lore:
+        - '[&bᛃ&r] &aВы получили 75000$'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за двадцать пятый день'
+    day26:
+      rewards:
+        - 'eco give %player% 80000'
+      lore:
+        - '[&bᛃ&r] &aВы получили 80000$'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за двадцать шестой день'
+    day27:
+      rewards:
+        - 'give %player% totem_of_undying 3' #выдать нагрудник война
+      lore:
+        - '[&bᛃ&r] &Вы получили &4Нагрудник война'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за двадцать седьмой день'
+    day28:
+      rewards:
+        - 'eco give %player% 90000'
+      lore:
+        - '[&bᛃ&r] &aВы получили 90000$'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за двадцать восьмой день'
+    day29:
+      rewards:
+        - 'points give %player% 5000'
+      lore:
+        - '[&bᛃ&r] Вы получили &55000 аркойнов'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за двадцать девятый день'
+    day30:
+      rewards:
+        - 'give %player% totem_of_undying 3' #выдать тег ОЛД
+      lore:
+        - '[&bᛃ&r] &aВы получили тег &6ОЛД'
+        - 'Что бы установить его перейдите в /command'
+        - '[&bᛃ&r] &aВы забрали все награды, поздравляем!'
+      title: '&a&lНаграда'
+      subtitle: '&7Вы получили награду за тридцатый день'
   daily-available-lore:
-    - "&7Reward contains:"
-    - "&a 8x &fIron Ingot"
-    - " "
-    - "&c❌ premium reward unavailable"
+    - '&7Reward contains:'
+    - '&a 8x &fIron Ingot'
+    - ' '
+    - '&c❌ premium reward unavailable'
   daily-available-premium-lore:
-    - "&7Reward contains:"
-    - "&a 16x &fIron Ingot"
-    - "&a  3x &fGold Ingot"
-    - " "
-    - "&e✔ premium reward available"
-  daily-displayname-unavailable: "&c&lDAILY REWARD"
+    - '&7Reward contains:'
+    - '&a 16x &fIron Ingot'
+    - '&a  3x &fGold Ingot'
+    - ' '
+    - '&e✔ premium reward available'
+  daily-displayname-unavailable: '&c&lDAILY REWARD'
   daily-unavailable-lore:
-    - " "
-    - "&cAvailable in: %cooldown%"
+    - ' '
+    - '&cAvailable in: %cooldown%'
   daily-rewards:
-    - "give %player% iron_ingot 8"
+    - 'give %player% iron_ingot 8'
   daily-premium-rewards:
-    - "give %player% iron_ingot 16"
-    - "give %player% gold_ingot 3"
+    - 'give %player% iron_ingot 16'
+    - 'give %player% gold_ingot 3'
   #
   # WEEKLY REWARD SECTION
   #
-  weekly-placeholder: "weekly"
+  weekly-placeholder: weekly
   # In hours
   weekly-cooldown: 168
   weekly-position: 22
   weekly-sound: ENTITY_FIREWORK_ROCKET_LARGE_BLAST
-  weekly-title: "&e&lRewards"
-  weekly-subtitle: "&7You have collected your &eweekly &7reward"
-  weekly-collected: "&e%player% &7collected his &e&lweekly reward!"
-  weekly-premium-collected: "&e%player% &7collected his &e&lpremium weekly reward!"
-  weekly-displayname-available: "&a&lWEEKLY REWARD"
-  weekly-available-item: "CHEST_MINECART"
-  weekly-unavailable-item: "MINECART"
+  weekly-title: '&e&lRewards'
+  weekly-subtitle: '&7You have collected your &eweekly &7reward'
+  weekly-collected: '&e%player% &7collected his &e&lweekly reward!'
+  weekly-premium-collected: '&e%player% &7collected his &e&lpremium weekly reward!'
+  weekly-displayname-available: '&a&lWEEKLY REWARD'
+  weekly-available-item: CHEST_MINECART
+  weekly-unavailable-item: MINECART
   weekly-available-lore:
-    - "&7Reward contains:"
-    - "&a 1x &fDiamond"
-    - " "
-    - "&c❌ premium reward unavailable"
+    - '&7Reward contains:'
+    - '&a 1x &fDiamond'
+    - ' '
+    - '&c❌ premium reward unavailable'
   weekly-available-premium-lore:
-    - "&7Reward contains:"
-    - "&a 5x &fDiamond"
-    - "&a 3x &fEmerald"
-    - " "
-    - "&e✔ premium reward available"
-  weekly-displayname-unavailable: "&c&lWEEKLY REWARD"
+    - '&7Reward contains:'
+    - '&a 5x &fDiamond'
+    - '&a 3x &fEmerald'
+    - ' '
+    - '&e✔ premium reward available'
+  weekly-displayname-unavailable: '&c&lWEEKLY REWARD'
   weekly-unavailable-lore:
-    - " "
-    - "&cAvailable in: %cooldown%"
+    - ' '
+    - '&cAvailable in: %cooldown%'
   weekly-rewards:
-    - "give %player% diamond 1"
+    - 'give %player% diamond 1'
   weekly-premium-rewards:
-    - "give %player% diamond 5"
-    - "give %player% emerald 3"
+    - 'give %player% diamond 5'
+    - 'give %player% emerald 3'
   #
   # MONTHLY REWARD SECTION
   #
-  monthly-placeholder: "monthly"
+  monthly-placeholder: monthly
   # In hours
   monthly-cooldown: 720
   monthly-position: 24
   monthly-sound: ENTITY_FIREWORK_ROCKET_BLAST
-  monthly-title: "&9&lRewards"
-  monthly-subtitle: "&7You have collected your &9monthly &7reward"
-  monthly-collected: "&9%player% &7collected his &9&lmonthly reward!"
-  monthly-premium-collected: "&9%player% &7collected his &9&lpremium monthly reward!"
-  monthly-displayname-available: "&a&lMONTHLY REWARD"
-  monthly-available-item: "CHEST_MINECART"
-  monthly-unavailable-item: "MINECART"
+  monthly-title: '&9&lRewards'
+  monthly-subtitle: '&7You have collected your &9monthly &7reward'
+  monthly-collected: '&9%player% &7collected his &9&lmonthly reward!'
+  monthly-premium-collected: '&9%player% &7collected his &9&lpremium monthly reward!'
+  monthly-displayname-available: '&a&lMONTHLY REWARD'
+  monthly-available-item: CHEST_MINECART
+  monthly-unavailable-item: MINECART
   monthly-available-lore:
-    - "&7Reward contains:"
-    - "&a  8x &fDiamond"
-    - "&a 32x &fIron Ingot"
-    - "&a 16x &fGold Ingot"
-    - " "
-    - "&c❌ premium reward unavailable"
+    - '&7Reward contains:'
+    - '&a  8x &fDiamond'
+    - '&a 32x &fIron Ingot'
+    - '&a 16x &fGold Ingot'
+    - ' '
+    - '&c❌ premium reward unavailable'
   monthly-available-premium-lore:
-    - "&7Reward contains:"
-    - "&a  1x &fNether Star"
-    - "&a 16x &fDiamond"
-    - "&a 64x &fIron Ingot"
-    - "&a 32x &fGold Ingot"
-    - " "
-    - "&e✔ premium reward activated"
-  monthly-displayname-unavailable: "&c&lMONTHLY REWARD"
+    - '&7Reward contains:'
+    - '&a  1x &fNether Star'
+    - '&a 16x &fDiamond'
+    - '&a 64x &fIron Ingot'
+    - '&a 32x &fGold Ingot'
+    - ' '
+    - '&e✔ premium reward activated'
+  monthly-displayname-unavailable: '&c&lMONTHLY REWARD'
   monthly-unavailable-lore:
-    - " "
-    - "&cAvailable in: %cooldown%"
+    - ' '
+    - '&cAvailable in: %cooldown%'
   monthly-rewards:
-    - "give %player% diamond 8"
-    - "give %player% iron_ingot 32"
-    - "give %player% gold_ingot 16"
+    - 'give %player% diamond 8'
+    - 'give %player% iron_ingot 32'
+    - 'give %player% gold_ingot 16'
   monthly-premium-rewards:
-    - "give %player% nether_star 1"
-    - "give %player% diamond 16"
-    - "give %player% iron_ingot 64"
-    - "give %player% gold_ingot 32"
+    - 'give %player% nether_star 1'
+    - 'give %player% diamond 16'
+    - 'give %player% iron_ingot 64'
+    - 'give %player% gold_ingot 32'
